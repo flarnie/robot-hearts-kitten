@@ -1,0 +1,69 @@
+@import url(http://fonts.googleapis.com/css?family=Press+Start+2P);
+
+/* mixins and magic numbers */
+/* colors */
+$baseblack: #575757;
+$robotgrey: #bfbfbf;
+$grassgreen: #5AE310;
+$medgreen: #2EBA3F;
+$kittenyellow: #ffe79e;
+$skyblue: #1188FF;
+$medblue: #4422FF;
+$darkblue: #040590;
+$baseorange: #FE5500;
+$basered: #EE0001;
+$basebrown: #69533A;
+$lghtbrown: #A8845B;
+$textoutlinewidth: 2px;
+
+
+/* mixins */
+@mixin top-level-centered {
+width: 80%;
+margin: 0 auto;	
+padding: .5em 0;
+}
+
+/* general styles */
+
+html {
+	height: 100%;
+}
+
+body {
+	background: $darkblue;
+	height: 100%;
+}
+
+.content {
+	@include top-level-centered;
+	background: $medblue;
+	color: $baseorange;
+	font-family: 'Press Start 2P', cursive;
+	min-height: 100%;
+	padding: 0 1.5em ;
+}
+
+a {
+	color: $baseorange;
+}
+
+/* header styles */
+
+.content header h1 {
+	text-shadow:
+   -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,  
+    $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+    -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
+     $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
+
+  padding: 1.5em 0;
+}
+
+/* footer styles */
+
+.content footer {
+	position: absolute;
+	bottom: 0px;
+}
+
