@@ -6,31 +6,48 @@ class Level < ActiveRecord::Base
   
   def generate_item_array()
     cookie_coords = []
+    
     until cookie_coords.length == self.cookies 
       rand_pt = generate_random_point
       if !(cookie_coords.include?(rand_pt)) 
         cookie_coords << rand_pt
       end
     end
+    
     kitten_coord = nil
-    until kitten_coords
+    
+    until kitten_coord
       rand_pt = generate_random_point
       if !(cookie_coords.include?(rand_pt))
         kitten_coord = rand_pt
       end
     end
-    item_ar = [{ name: "kitten", coords: kitten_coord }]
-    cookie_coords.each do |coord|
-      item_ar << { name: "cookie", coords: coord }
+    # puts "KITTEN IS AT: #{kitten_coord}"
+    item_ar = []
+    
+    self.grid_height.times do |y|
+      self.grid_width.times do |x|
+        if (cookie_coords.include?([x, y]))
+          contents = {"contents" => "cookie"}
+        elsif (kitten_coord == [x, y])
+          contents = {"contents" => "kitten"}
+        else
+          contents = {"contents" => "nothing"}
+        end
+        contents["x"] = x
+        contents["y"] = y
+        item_ar << contents
+      end
     end
+    
     item_ar
   end
   
   private
   
   def generate_random_point()
-    rx = rand(self.grid_width + 1)
-    ry = rand(self.grid_height + 1)
+    rx = rand(self.grid_width)
+    ry = rand(self.grid_height)
     [rx, ry]    
   end
   

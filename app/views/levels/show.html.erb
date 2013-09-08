@@ -1,5 +1,9 @@
-<script type="application/json" class="bootstrapped-level">
-{ level_id: <%= @level.id %> }
+<h3><%= @level.title %></h3>
+<script type="application/json" id="bootstrapped-level">
+{ "title": "<%= @level.title %>",
+  "grid_height": <%= @level.grid_height %>,
+  "grid_width": <%= @level.grid_width %>,
+  "items": <%= (@level.generate_item_array()).to_json.html_safe %> }
 </script>
 <div class="canvas-wrapper">
   <canvas id="level-canvas" width="700" height="450">Your browser does not support the HTML5 Canvas.</canvas>

@@ -1,6 +1,6 @@
 Rhk.Views.LevelView = Backbone.View.extend({
 	initialize: function (options) {
-		this.imgWidth = 90;
+		this.imgWidth = 18;
 		this.canvas_width = options.canvas_width;
 		this.canvas_height = options.canvas_height;
 		this.ctx = document.getElementById("level-canvas").getContext("2d");
@@ -18,7 +18,16 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			name: "robot"
 		});
 		//the collection of actors
-		this.actors = new Rhk.Collections.Movables([robot]);
+		this.actors = new Rhk.Collections.Movables([robot]);		
+		// boxes
+		_(options.boxes).each( function (boxData) {
+			console.log("box at ", boxData.x, ",", boxData.y , " and contains ", boxData.contents)
+			that.actors.push(new Rhk.Models.Box({
+				ctx: that.ctx,
+				position: [boxData.x, boxData.y],
+				contents: boxData.contents
+			}))
+		});
 	},
 
 	render: function () {
