@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  score_board_id: 1
+  time: 1
+  cookies: 1
+  username: MyString
+
+two:
+  score_board_id: 1
+  time: 1
+  cookies: 1
+  username: MyString

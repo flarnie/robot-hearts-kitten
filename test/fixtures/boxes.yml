@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contents: MyString
+  x: 1
+  'y': 1
+  level_id: 1
+
+two:
+  contents: MyString
+  x: 1
+  'y': 1
+  level_id: 1

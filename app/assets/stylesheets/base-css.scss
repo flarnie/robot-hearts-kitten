@@ -31,13 +31,14 @@ html {
 }
 
 body {
-	background: $darkblue;
+	background: #000000;
 	height: 100%;
 }
 
 .content {
 	@include top-level-centered;
-	background: $medblue;
+	border-left: solid 2px #ffffff;
+	border-right: solid 2px #ffffff;
 	color: $baseorange;
 	font-family: 'Press Start 2P', cursive;
 	min-height: 100%;

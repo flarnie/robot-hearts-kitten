@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+ActiveRecord::Base.transaction do
+  #Level Generator
+  def level_generator(order, grid_width, grid_height) 
+    lvl = Level.create!(order: order, title: "Level #{order}")
+    grid_width.times do |x|
+      grid_height.times do |y|
+        Box.create!(level_id: lvl.id, x: x, y: y)
+      end
+    end
+    s_board = ScoreBoard.create!(level_id: lvl.id)
+    3.times do |n|
+      Score.create!(score_board_id: s_board.id, time: (n + 1 * 60))
+    end
+  end
+  
+  #Level 1
+  level_generator(1, 1, 1)
+  #Level 2
+  level_generator(2, 1, 10)
+  #Level 3
+  level_generator(3, 10, 10)
+  
+end
