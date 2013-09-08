@@ -14,14 +14,18 @@ $baseorange: #FE5500;
 $basered: #EE0001;
 $basebrown: #69533A;
 $lghtbrown: #A8845B;
+
+/* numbers */
+$basepadding: 1.5em;
 $textoutlinewidth: 2px;
 
 
 /* mixins */
 @mixin top-level-centered {
-width: 80%;
-margin: 0 auto;	
-padding: .5em 0;
+	width: 80%;
+	min-width: 750px;
+	margin: 0 auto;	
+	padding: .5em 0;
 }
 
 /* general styles */
@@ -42,7 +46,7 @@ body {
 	color: $baseorange;
 	font-family: 'Press Start 2P', cursive;
 	min-height: 100%;
-	padding: 0 1.5em ;
+	padding: 0 $basepadding ;
 }
 
 a {
@@ -51,7 +55,11 @@ a {
 
 ul li, h1, h2, h3, h4, p {
 	padding-top: 1em;
-	padding-bottom: 1.5em;
+	padding-bottom: $basepadding;
+}
+
+ul.non-list li {
+	list-style: none;
 }
 
 /* high scores table */
@@ -76,7 +84,13 @@ table.high-scores {
     -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
      $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
 
-  padding: 1.5em 0;
+  padding: $basepadding 0;
+}
+
+/* content styles */
+
+.canvas-wrapper canvas {
+	border: 1px solid $medblue;
 }
 
 /* footer styles */
@@ -85,4 +99,10 @@ table.high-scores {
 	position: absolute;
 	bottom: 0px;
 }
+
+footer.main-footer ul li {
+	display: inline-block;
+	padding-right: $basepadding;
+}
+
 
