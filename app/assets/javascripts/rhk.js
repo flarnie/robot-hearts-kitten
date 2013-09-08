@@ -16,11 +16,13 @@ window.Rhk = {
 				});
 				homeCanvasView.render();
 				homeCanvasView.startAnimation();
-			} else if ($(".bootstrapped-level").length){
+			} else if ($(".bootstrapped-level").length){				
 				console.log("On Level Page");
+				var level_id =  2//(JSON.parse($(".bootstrapped-level").html()))["level_id"];
 				var levelView = new Rhk.Views.LevelView({
 					canvas_width: 700,
 					canvas_height: 450,
+					level_id : level_id
 				});
 				levelView.render();
 				levelView.startAnimation();

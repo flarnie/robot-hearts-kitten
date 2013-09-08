@@ -6,6 +6,14 @@ class LevelsController < ApplicationController
   
   def show
     @level = Level.find(params[:id])
+    #TODO: place_random_kitten before rander, clear it after render.
+    respond_to do |format|
+      format.json { render "levels/show.rabl" }
+      #TODO: get rable template to work!
+      # format.json { render :json => @level }
+      format.html { render :show }
+    end
+    puts "after the render"
   end
 
 end

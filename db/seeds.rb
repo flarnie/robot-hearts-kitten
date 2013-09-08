@@ -7,16 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 ActiveRecord::Base.transaction do
   #Level Generator
-  def level_generator(order, grid_width, grid_height) 
+  def level_generator(order, grid_width, grid_height, cookies = 0) 
     lvl = Level.create!(level_order: order, 
     title: "Level #{order}", 
     grid_width: grid_width,
-    grid_height: grid_height )
-    grid_width.times do |x|
-      grid_height.times do |y|
-        Box.create!(level_id: lvl.id, x: x, y: y)
-      end
-    end
+    grid_height: grid_height, 
+    cookies: cookies )
     s_board = ScoreBoard.create!(level_id: lvl.id)
     3.times do |n|
       Score.create!(score_board_id: s_board.id, time: (n + 1 * 60))
@@ -29,5 +25,7 @@ ActiveRecord::Base.transaction do
   level_generator(2, 10, 1)
   #Level 3
   level_generator(3, 10, 10)
+  #Level 4
+  level_generator(4, 10, 10, 5)
   
 end

@@ -11,26 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908162811) do
-
-  create_table "boxes", :force => true do |t|
-    t.string   "contents"
-    t.integer  "x"
-    t.integer  "y"
-    t.integer  "level_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "boxes", ["level_id"], :name => "index_boxes_on_level_id"
+ActiveRecord::Schema.define(:version => 20130908181205) do
 
   create_table "levels", :force => true do |t|
     t.integer  "level_order"
     t.string   "title"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "grid_width"
     t.integer  "grid_height"
+    t.integer  "cookies",     :default => 0
   end
 
   create_table "score_boards", :force => true do |t|

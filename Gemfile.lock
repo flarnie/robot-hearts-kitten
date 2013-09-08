@@ -118,6 +118,7 @@ DEPENDENCIES
   backbone-on-rails
   coffee-rails (~> 3.2.1)
   jquery-rails
+  json
   pg
   rabl
   rails (= 3.2.14)
