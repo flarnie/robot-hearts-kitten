@@ -1,7 +1,7 @@
 Rhk::Application.routes.draw do
   
   resources :scoreboards, :only => [:index, :show] do
-    resources :score, :only => :create
+    resources :scores, :only => :create
   end
   
   resources :levels, :only => [:index, :show]

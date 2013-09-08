@@ -2,7 +2,7 @@ class Level < ActiveRecord::Base
   attr_accessible :level_order, :title, :grid_width, :grid_height, :cookies
   validates :level_order, :presence => true, :numericality => { :only_integer => true }
   validates :grid_width, :grid_height, :presence => true, :numericality => { :only_integer => true }
-  has_many :scoreboards, :class_name => "ScoreBoard", :foreign_key => :level_id
+  has_one :scoreboard, :class_name => "ScoreBoard", :foreign_key => :level_id
   
   def generate_item_array()
     cookie_coords = []

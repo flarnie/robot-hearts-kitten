@@ -1,6 +1,7 @@
 Rhk.Views.LevelView = Backbone.View.extend({
 	initialize: function (options) {
 		this.imgWidth = 18;
+		this.scoreboard_id = options.scoreboard_id;
 		this.canvas_width = options.canvas_width;
 		this.canvas_height = options.canvas_height;
 		this.ctx = document.getElementById("level-canvas").getContext("2d");
@@ -46,9 +47,17 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			window.clearInterval(this.intervalID2);
 			window.clearInterval(this.intervalID1);
 			var $winMsg = $("<div></div>").addClass("win-message").text("You found the kitten!");
+			var scoreData = {"score": {
+					"cookies": 0,
+					"score_board_id": this.scoreboard_id,
+					"time": this.time
+			  }
+			}
+			var newScoreView = new Rhk.Views.NewScoreView({
+				scoreData: scoreData
+			});
+			$winMsg.append(newScoreView.render().$el);
 			$(".canvas-wrapper").append($winMsg);
-			//TODO: send score to database
-			
 		}
 	},
 	

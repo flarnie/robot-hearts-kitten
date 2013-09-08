@@ -21,10 +21,12 @@ window.Rhk = {
 				var canvas_height = $("#level-canvas").height();
 				var levelData = JSON.parse($("#bootstrapped-level").html());
 				var boxes = levelData.items;
+				var scoreboard_id = levelData.scoreboard_id;
 				var levelView = new Rhk.Views.LevelView({
 					canvas_width: canvas_width,
 					canvas_height: canvas_height,
-					boxes: boxes
+					boxes: boxes,
+					scoreboard_id: scoreboard_id
 				});
 				levelView.render();
 				levelView.startAnimation();

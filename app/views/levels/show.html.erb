@@ -1,8 +1,6 @@
 <h3><%= @level.title %></h3>
 <script type="application/json" id="bootstrapped-level">
-{ "title": "<%= @level.title %>",
-  "grid_height": <%= @level.grid_height %>,
-  "grid_width": <%= @level.grid_width %>,
+{ "scoreboard_id": "<%= @level.scoreboard.id %>",
   "items": <%= (@level.generate_item_array()).to_json.html_safe %> }
 </script>
 
