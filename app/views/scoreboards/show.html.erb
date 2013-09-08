@@ -1,0 +1,17 @@
+<h3>HighScores for <%= @scoreboard.level.title %></h3>
+<table class="high-scores">
+  <tr>
+    <th>NAME</th>
+    <th>TIME</th>
+    <th>COOKIES</th>
+    <th>DATE-TIME</th>
+  </tr>
+  <% @scoreboard.scores.order("time ASC").each do |score| %>
+    <tr>
+      <td><%= score.username %></td>
+      <td><%= score.time %></td>
+      <td><%= score.cookies %></td>
+      <td><%= score.created_at %></td>
+    </tr>
+  <% end %>
+</table>

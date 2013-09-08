@@ -1,0 +1,7 @@
+<h3>ScoreBoards:</h3>
+<ul>
+  <% @scoreboards.each do |scoreboard| %>
+    <% scoreboard_lvl = scoreboard.level.title %>
+    <li><%= link_to "Scoreboard for #{scoreboard_lvl}", scoreboard_url(scoreboard) %>
+  <% end %>
+</ul>
