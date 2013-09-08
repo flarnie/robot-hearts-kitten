@@ -8,7 +8,10 @@
 ActiveRecord::Base.transaction do
   #Level Generator
   def level_generator(order, grid_width, grid_height) 
-    lvl = Level.create!(level_order: order, title: "Level #{order}")
+    lvl = Level.create!(level_order: order, 
+    title: "Level #{order}", 
+    grid_width: grid_width,
+    grid_height: grid_height )
     grid_width.times do |x|
       grid_height.times do |y|
         Box.create!(level_id: lvl.id, x: x, y: y)
@@ -23,7 +26,7 @@ ActiveRecord::Base.transaction do
   #Level 1
   level_generator(1, 1, 1)
   #Level 2
-  level_generator(2, 1, 10)
+  level_generator(2, 10, 1)
   #Level 3
   level_generator(3, 10, 10)
   
