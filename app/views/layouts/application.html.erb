@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rhk</title>
+  <title>Robot Hearts Kitten</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="content">
+<div class="wrapper">
   
 <header>
   <h1>Robot &#x2764;'s Kitten</h1>
 </header>
-  
+<div class="content">
 <%= yield %>
-
+</div>
 <footer class="main-footer">
   <ul class="non-list">
     <li><%= link_to "Home", root_url, action: "get"  %>
