@@ -1,0 +1,6 @@
+<h3>Levels:</h3>
+<ul>
+  <% @levels.each do |level| %>
+    <li><%= link_to level.title, level_url(level) %>
+  <% end %>
+</ul>

@@ -57,10 +57,6 @@ Rhk.Views.HomeCanvasView = Backbone.View.extend({
       that.render();
       that.step();
       that.render();
-			//testing
-			// that.actors.each(function (actor) {
-			// 	console.log(actor.position);
-			// });
 	  }, 22);
 	}
 	

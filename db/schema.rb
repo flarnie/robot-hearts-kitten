@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907233607) do
+ActiveRecord::Schema.define(:version => 20130908145407) do
 
   create_table "boxes", :force => true do |t|
     t.string   "contents"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(:version => 20130907233607) do
   add_index "boxes", ["level_id"], :name => "index_boxes_on_level_id"
 
   create_table "levels", :force => true do |t|
-    t.integer  "order"
+    t.integer  "level_order"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "score_boards", :force => true do |t|

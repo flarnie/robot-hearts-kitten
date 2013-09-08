@@ -8,10 +8,9 @@ window.Rhk = {
 			//HACK: find better way to determine page in the future?
 			if($("#home-canvas").length){
 				console.log("On the homepage");
-				//TODO: make this local after testing
 				var canvas_width = $("#home-canvas").width();
 				var canvas_height = $("#home-canvas").height();
-				homeCanvasView = new Rhk.Views.HomeCanvasView({
+				var homeCanvasView = new Rhk.Views.HomeCanvasView({
 					canvas_width: canvas_width,
 					canvas_height: canvas_height
 				});
