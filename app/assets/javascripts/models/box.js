@@ -19,6 +19,18 @@ Rhk.Models.Box = Backbone.Model.extend({
 		if (this.opened) {
 			this.ctx.strokeStyle = this.color;
 			this.ctx.strokeRect(that.position[0], that.position[1], that.box_size, that.box_size);	
+			if (this.contents === "kitten") {
+				var kittenImg = new Image();
+				kittenImg.src = "../kitten.gif";
+				var that = this;
+				kittenImg.onload = function () {
+					that.ctx.drawImage(kittenImg,
+						that.position[0]+5, 
+						that.position[1]+5, 
+						that.box_size-5,
+						that.box_size-5);
+				};
+			}
 		} else {
 			this.ctx.fillStyle = this.color;
 			this.ctx.fillRect(that.position[0], that.position[1], that.box_size, that.box_size);	
@@ -33,6 +45,11 @@ Rhk.Models.Box = Backbone.Model.extend({
 	  var yDist = Math.abs(oy - this.position[1]);
 		if (xDist < this.box_size && yDist < this.box_size) {
 			this.opened = true;
+			if (this.contents === "kitten"){
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 })

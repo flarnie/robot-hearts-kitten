@@ -33,24 +33,29 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		var that = this;
 		this.ctx.clearRect(0, 0, this.canvas_width, this.canvas_height);
 		this.robot.drawSelf();
+		//NOTE: we only check for collision if the actor is a box
 		this.boxes.each(function (box) {
+			var kittenFound = box.detectCollision(that.robot);
 			box.drawSelf();
+			if (kittenFound){
+				that.kittenFound = true;
+			}
 		});
+		if (that.kittenFound){
+			window.clearInterval(this.intervalID);
+		}
 	},
 	
 	startAnimation: function () {
 		var that = this;
-		window.setInterval(function (){
-			//NOTE: we only check for collision if the actor is a box
-			that.boxes.each(function (box) {
-				box.detectCollision(that.robot);
-			});
+		var intervalID = window.setInterval(function (){
       that.render();
 	  }, 22);
 		//NOTE: we can't set keydown handler in the events hash
 		$(window).on("keydown", null, function (e) {
 			that.moveRobot(e);
-		})
+		});
+		this.intervalID = intervalID;
 	},
 	
 	moveRobot: function (e) {
