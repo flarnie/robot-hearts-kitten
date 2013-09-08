@@ -1,6 +1,7 @@
 Rhk.Views.NewScoreView = Backbone.View.extend({
 	initialize: function (options) {
 		this.scoreData = options.scoreData;
+		this.nextLevelId = null; //TODO: make this actually filled
 	},
 	
 	render: function () {
@@ -27,7 +28,6 @@ Rhk.Views.NewScoreView = Backbone.View.extend({
 		var username = $("#score_username").val();
 		this.scoreData["score"]["username"] = username;
 		console.log(this.scoreData);
-		//TODO: submit Ajax request to make new score
 		var that = this;
 		$.ajax({
 			url: "/scoreboards/"+that.scoreData["score"]["score_board_id"]+"/scores",
@@ -35,6 +35,14 @@ Rhk.Views.NewScoreView = Backbone.View.extend({
 			data: that.scoreData,
 			success: function (response) {
 				console.log("SUCCESS.  response: ",response);
+				//TODO: link to next level if there is one!
+				var renderedContent = JST["scores/success"]({
+					score_board_id: that.scoreData["score"]["score_board_id"],
+					next_level_id: that.nextLevelId
+				});
+				//TODO: will this work?
+				console.log(renderedContent);
+				that.$el.html(renderedContent);
 			},
 			error: function (response, message) {
 				console.log("ERROR.  response: ",response);

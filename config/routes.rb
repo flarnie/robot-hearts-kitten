@@ -7,5 +7,6 @@ Rhk::Application.routes.draw do
   resources :levels, :only => [:index, :show]
 
   match "/credits" => "root#credits"
+  match "/levels/scoreboards/:id" => "scoreboards#show"
   root :to => "root#home"
 end
