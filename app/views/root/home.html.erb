@@ -1,16 +1,6 @@
-<header>
-  <h1>Robot &#x2764;'s Kitten</h1>
-</header>
 <div class="canvas-wrapper">
   
 </div>
 <div class="play-button-wrapper">
-  <a href="#show-level-1" class="play-button"><strong>PLAY</strong></a>
+  <%= link_to "PLAY", level_url(@level_one), action: "get", class: "play-button"  %>
 </div>
-<footer>
-  <ul>
-    <li><a href="#scoreboards/index">HighScores</a>
-    <li><a href="#root/contact">Credits</a>
-    <li><a href="#levels/index">Levels</a>
-  </ul>
-</footer>

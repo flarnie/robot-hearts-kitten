@@ -8,7 +8,22 @@
 </head>
 <body>
 <div class="content">
+  
+<header>
+  <h1>Robot &#x2764;'s Kitten</h1>
+</header>
+  
 <%= yield %>
+
+<footer>
+  <ul>
+    <li><%= link_to "Home", root_url, action: "get"  %>
+    <li><%= link_to "HighScores", scoreboards_url, action: "get"  %>
+    <li><%= link_to "Credits", credits_url, action: "get"  %>
+    <li><%= link_to "Levels", levels_url, action: "get" %>
+  </ul>
+</footer>
 </div>
+
 </body>
 </html>
