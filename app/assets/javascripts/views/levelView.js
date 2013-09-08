@@ -9,7 +9,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		// robot
 		var robotImg = new Image();
 		robotImg.src = "../robot.gif";
-		var robot = new Rhk.Models.Movable({
+		this.robot = new Rhk.Models.Movable({
 			ctx: that.ctx,
 			imageObj: robotImg,
 			position: [50, (that.canvas_height / 2)],
@@ -17,12 +17,11 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			width: that.imgWidth,
 			name: "robot"
 		});
-		//the collection of actors
-		this.actors = new Rhk.Collections.Movables([robot]);		
 		// boxes
+		this.boxes = new Rhk.Collections.Boxes();
 		_(options.boxes).each( function (boxData) {
 			console.log("box at ", boxData.x, ",", boxData.y , " and contains ", boxData.contents)
-			that.actors.push(new Rhk.Models.Box({
+			that.boxes.push(new Rhk.Models.Box({
 				ctx: that.ctx,
 				position: [boxData.x, boxData.y],
 				contents: boxData.contents
@@ -33,14 +32,19 @@ Rhk.Views.LevelView = Backbone.View.extend({
 	render: function () {
 		var that = this;
 		this.ctx.clearRect(0, 0, this.canvas_width, this.canvas_height);
-		this.actors.each(function (actor) {
-			actor.drawSelf();
+		this.robot.drawSelf();
+		this.boxes.each(function (box) {
+			box.drawSelf();
 		});
 	},
 	
 	startAnimation: function () {
 		var that = this;
 		window.setInterval(function (){
+			//NOTE: we only check for collision if the actor is a box
+			that.boxes.each(function (box) {
+				box.detectCollision(that.robot);
+			});
       that.render();
 	  }, 22);
 		//NOTE: we can't set keydown handler in the events hash
@@ -50,21 +54,20 @@ Rhk.Views.LevelView = Backbone.View.extend({
 	},
 	
 	moveRobot: function (e) {
-		var robot = this.actors.findWhere({name: "robot"});
 		var speed = 6;
 		//TODO: add case statement to move robot based on keycodes
 		switch (e.keyCode) {
 			case 37:
-				robot.move("west", speed);
+				this.robot.move("west", speed);
 				break;
 			case 38:
-				robot.move("north", speed);
+				this.robot.move("north", speed);
 			  break;
 			case 39:
-				robot.move("east", speed);
+				this.robot.move("east", speed);
 			  break;
 			case 40:
-				robot.move("south", speed);
+				this.robot.move("south", speed);
 			  break;
 		  default:
 		    // do nothing

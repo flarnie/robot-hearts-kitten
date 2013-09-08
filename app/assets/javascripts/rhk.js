@@ -16,13 +16,10 @@ window.Rhk = {
 				});
 				homeCanvasView.render();
 				homeCanvasView.startAnimation();
-			} else if ($("#bootstrapped-level").length){				
-				console.log("On Level Page");
-				var canvas_width = $("#home-canvas").width();
-				var canvas_height = $("#home-canvas").height();
-				console.log($("#bootstrapped-level").html());
+			} else if ($("#bootstrapped-level").length){
+				var canvas_width = $("#level-canvas").width();
+				var canvas_height = $("#level-canvas").height();
 				var levelData = JSON.parse($("#bootstrapped-level").html());
-				console.log(levelData.items);
 				var boxes = levelData.items;
 				var levelView = new Rhk.Views.LevelView({
 					canvas_width: canvas_width,
