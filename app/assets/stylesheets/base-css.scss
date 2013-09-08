@@ -89,8 +89,26 @@ table.high-scores {
 
 /* content styles */
 
-.canvas-wrapper canvas {
+.canvas-wrapper canvas, .win-message {
 	border: 1px solid $medblue;
+}
+
+.canvas-wrapper {
+	position: relative;
+}
+
+.timer {
+	position: absolute;
+	left: 20px;
+	z-index: 200;
+}
+
+.win-message {
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	background: #000000;
+	padding: $basepadding;
 }
 
 /* footer styles */

@@ -4,6 +4,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		this.canvas_width = options.canvas_width;
 		this.canvas_height = options.canvas_height;
 		this.ctx = document.getElementById("level-canvas").getContext("2d");
+		this.time = 0;
 		//the actors
 		var that = this;
 		// robot
@@ -42,20 +43,32 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			}
 		});
 		if (that.kittenFound){
-			window.clearInterval(this.intervalID);
+			window.clearInterval(this.intervalID2);
+			window.clearInterval(this.intervalID1);
+			var $winMsg = $("<div></div>").addClass("win-message").text("You found the kitten!");
+			$(".canvas-wrapper").append($winMsg);
+			//TODO: send score to database
+			
 		}
 	},
 	
 	startAnimation: function () {
+		$(".timer").html("<p>"+this.time+"</p>");
 		var that = this;
-		var intervalID = window.setInterval(function (){
+		var intervalID1 = window.setInterval(function (){
       that.render();
 	  }, 22);
 		//NOTE: we can't set keydown handler in the events hash
 		$(window).on("keydown", null, function (e) {
 			that.moveRobot(e);
 		});
-		this.intervalID = intervalID;
+		this.intervalID1 = intervalID1;
+		var intervalID2 = window.setInterval(function () {
+			that.time += 1;
+			$(".timer").html("<p>"+that.time+"</p>");
+		}, 1000);
+		this.intervalID2 = intervalID2;
+		
 	},
 	
 	moveRobot: function (e) {
