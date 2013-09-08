@@ -18,6 +18,12 @@ window.Rhk = {
 				homeCanvasView.startAnimation();
 			} else if ($(".bootstrapped-level").length){
 				console.log("On Level Page");
+				var levelView = new Rhk.Views.LevelView({
+					canvas_width: 700,
+					canvas_height: 450,
+				});
+				levelView.render();
+				levelView.startAnimation();
 			} else {
 				console.log("On some other page");
 			}

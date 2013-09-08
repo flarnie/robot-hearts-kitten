@@ -1,7 +1,7 @@
 class RootController < ApplicationController
 
   def home
-    @level_one = Level.find_by_order(1)
+    @level_one = Level.find_by_level_order(1)
     render :home
   end
 

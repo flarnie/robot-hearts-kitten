@@ -1,5 +1,6 @@
 Rhk.Models.Movable = Backbone.Model.extend({
 	initialize: function (options) {
+		this.name = options.name;
 		this.ctx = options.ctx;
 		this.imageObj = options.imageObj;
 		this.position = options.position;
@@ -19,7 +20,7 @@ Rhk.Models.Movable = Backbone.Model.extend({
 		"north": [0, -1],
 		"south": [0, 1],
 		"east": [1, 0],
-		"west": [0, -1]
+		"west": [-1, 0]
 	},
 	
 	move: function (dir, distance) {
