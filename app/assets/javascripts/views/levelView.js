@@ -10,7 +10,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		var that = this;
 		// robot
 		var robotImg = new Image();
-		robotImg.src = "../robot.gif";
+		robotImg.src = "../robot.png";
 		this.robot = new Rhk.Models.Movable({
 			ctx: that.ctx,
 			imageObj: robotImg,

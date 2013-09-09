@@ -21,7 +21,7 @@ Rhk.Models.Box = Backbone.Model.extend({
 			this.ctx.strokeRect(that.position[0], that.position[1], that.box_size, that.box_size);	
 			if (this.contents === "kitten") {
 				var kittenImg = new Image();
-				kittenImg.src = "../kitten.gif";
+				kittenImg.src = "../kitten.png";
 				var that = this;
 				kittenImg.onload = function () {
 					that.ctx.drawImage(kittenImg,
