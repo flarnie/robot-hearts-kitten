@@ -46,9 +46,9 @@ Rhk.Models.Box = Backbone.Model.extend({
 		if (xDist < this.box_size && yDist < this.box_size) {
 			this.opened = true;
 			if (this.contents === "kitten"){
-				return true;
+				return "kitten";
 			} else {
-				return false;
+				return "other";
 			}
 		}
 	}

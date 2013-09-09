@@ -97,14 +97,22 @@ table.high-scores {
 	position: relative;
 }
 
-.timer {
+.timer, .meow-box, .win-message {
 	position: absolute;
+}
+
+.timer {
 	left: 20px;
 	z-index: 200;
 }
 
+.meow-box {
+	z-index: 201;
+	color: #ffffff;
+	font-size: 5%;
+}
+
 .win-message {
-	position: absolute;
 	left: 20%;
 	top: 20%;
 	background: #000000;

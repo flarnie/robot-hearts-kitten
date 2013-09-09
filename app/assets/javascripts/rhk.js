@@ -3,8 +3,16 @@ window.Rhk = {
   Collections: {},
   Views: {},
   Routers: {},
+  comparison: function (n1, n2) {
+	  if (n1 > n2) {
+		return -1;
+		} else if (n1 < n2) {
+			return 1; 
+		} else if (n1 === n2) {
+			return 0;
+		}
+	},
   initialize: function() {
-    	console.log('Hello from Backbone!');
 			//HACK: find better way to determine page in the future?
 			if($("#home-canvas").length){
 				console.log("On the homepage");

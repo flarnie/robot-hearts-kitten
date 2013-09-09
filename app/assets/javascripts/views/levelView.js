@@ -37,10 +37,21 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		this.robot.drawSelf();
 		//NOTE: we only check for collision if the actor is a box
 		this.boxes.each(function (box) {
-			var kittenFound = box.detectCollision(that.robot);
+			var found = box.detectCollision(that.robot);
 			box.drawSelf();
-			if (kittenFound){
+			if (found === "kitten"){
+				$(".meow-box").empty();
 				that.kittenFound = true;
+			} else if (found === "other") {
+				//TODO: get meow in place
+				$(".meow-box").html("<p>meow</p>");
+				var directionHint = that.boxes.getDirectionHint(that.robot.position);
+				console.log(directionHint);
+				var offset = 50;
+				var meowX = that.robot.position[0] + (offset * directionHint[0]);
+				var meowY = that.robot.position[1] + (offset * directionHint[1]);
+				$(".meow-box").css("left", meowX);
+				$(".meow-box").css("top", meowY);
 			}
 		});
 		if (that.kittenFound){
