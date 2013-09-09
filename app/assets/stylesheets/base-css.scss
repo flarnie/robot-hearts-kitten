@@ -97,7 +97,7 @@ table.high-scores {
 	position: relative;
 }
 
-.timer, .meow-box, .win-message {
+.timer, .meow-box, .cookie-counter, .win-message {
 	position: absolute;
 }
 
@@ -110,6 +110,12 @@ table.high-scores {
 	z-index: 201;
 	color: #ffffff;
 	font-size: 5%;
+}
+
+.cookie-counter {
+	left: 20px;
+	z-index: 200;
+	bottom: 50px;
 }
 
 .win-message {

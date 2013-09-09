@@ -58,7 +58,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			window.clearInterval(this.intervalID1);
 			var $winMsg = $("<div></div>").addClass("win-message").text("You found the kitten!");
 			var scoreData = {"score": {
-					"cookies": 0,
+					"cookies": that.boxes.countFoundCookies(),
 					"score_board_id": this.scoreboard_id,
 					"time": this.time
 			  }
@@ -69,6 +69,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			$winMsg.append(newScoreView.render().$el);
 			$(".canvas-wrapper").append($winMsg);
 		}
+		$(".cookie-counter").html("<p>COOKIES: "+this.boxes.countFoundCookies()+"</p>");
 	},
 	
 	startAnimation: function () {
