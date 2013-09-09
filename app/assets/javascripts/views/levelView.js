@@ -46,7 +46,6 @@ Rhk.Views.LevelView = Backbone.View.extend({
 				//TODO: get meow in place
 				$(".meow-box").html("<p>meow</p>");
 				var directionHint = that.boxes.getDirectionHint(that.robot.position);
-				console.log(directionHint);
 				var offset = 50;
 				var meowX = that.robot.position[0] + (offset * directionHint[0]);
 				var meowY = that.robot.position[1] + (offset * directionHint[1]);
