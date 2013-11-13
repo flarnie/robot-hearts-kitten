@@ -1,0 +1,22 @@
+=====Ongoing ToDo=====
+
+
+ X* stop footer from overlapping body
+ X* Make the title a link to home
+ * Add better README
+ * Have mini-high score previews with show/hide of full view
+ * cleanse the high scores of cheated scores for the moment
+ * make cookies give you negative time
+ * disallow any negative scores that didn't use the right # of cookies
+ * Have link to next level at the end of each current level
+ * Have prominent "play now" button flashing on the home page
+ * Fix bug that prevents 'meow' from showing up in chrome
+ X* Add robot favicon
+ * Add sounds!!!
+ * Add a level 5?
+ 
+ * General debugging
+ * Browser testing (IE, Safari, Firefox, Chrome)
+ 
+=====Bug List=====
+ * Using arrow keys moves the screen (scrolls) as well as the robot...
