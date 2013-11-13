@@ -1,4 +1,6 @@
 class Score < ActiveRecord::Base
+  COOKIE_VAL = 10
+  
   attr_accessible :cookies, :score_board_id, :time, :username
   validates :cookies, :presence => true
   validates :score_board_id, :presence => true
