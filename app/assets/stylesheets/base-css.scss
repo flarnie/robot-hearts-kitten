@@ -3,7 +3,6 @@
 /* mixins and magic numbers */
 /* colors */
 $baseblack: #575757;
-$robotgrey: #bfbfbf;
 $grassgreen: #5AE310;
 $medgreen: #2EBA3F;
 $kittenyellow: #ffe79e;
@@ -128,8 +127,7 @@ table.high-scores {
 /* footer styles */
 
 .wrapper footer {
-	position: absolute;
-	bottom: 0px;
+
 }
 
 footer.main-footer ul li {
