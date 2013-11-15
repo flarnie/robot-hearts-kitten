@@ -31,6 +31,21 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			}))
 		});
 	},
+	
+	//Triggers success visuals when cookie is found
+	cookieFound: function() {
+	  $(".cookie-counter").addClass("highlight");
+	  var $cookieAlert = $("<div></div>").text("COOKIE FOUND: YOU GAIN 10 SECONDS!");
+	  $cookieAlert.addClass("highlight").addClass("cookie-alert");
+	  $(".canvas-wrapper").append($cookieAlert);
+	  window.setTimeout(this.cookieExpire.bind(this), 5000);
+	},
+	
+	//Removes success visuals after they are shown
+	cookieExpire: function() {
+	  $(".cookie-counter").removeClass("highlight");
+	  $(".cookie-alert").remove();
+	},
 
 	render: function () {
 		var that = this;
@@ -48,7 +63,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
           box.counted = true;
           that.cookie_count += 1;
           that.time -= 10;
-          console.log("cookie found!");
+          that.cookieFound();
         }
 			} else if (found === "other") {
 				$(".meow-box").html("<p>meow</p>");

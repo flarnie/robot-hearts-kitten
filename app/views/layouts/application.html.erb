@@ -15,6 +15,13 @@
   <h1><%= link_to "Robot &#x2764;'s Kitten".html_safe, root_url %></h1>
 </header>
 <div class="content">
+  <% if flash[:messages] %>
+    <div class="messages">
+      <% flash[:messages].each do |message| %>
+      <p><%= message %></p>
+      <% end %>  
+    </div>
+  <% end %>
 <%= yield %>
 </div>
 <footer class="main-footer">

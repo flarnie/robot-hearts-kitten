@@ -5,8 +5,8 @@ class ScoresController < ApplicationController
     if @score.save
       render :json => @score
     else
-      #TODO: real error handling
-      render :json => "error!"
+      flash[:messages] = @score.errors.full_messages
+      redirect_to(:back)
     end
   end
 
