@@ -4,6 +4,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		this.scoreboard_id = options.scoreboard_id;
 		this.canvas_width = options.canvas_width;
 		this.canvas_height = options.canvas_height;
+		this.cookie_count = 0
 		this.ctx = document.getElementById("level-canvas").getContext("2d");
 		this.time = 0;
 		//the actors
@@ -42,8 +43,14 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			if (found === "kitten"){
 				$(".meow-box").empty();
 				that.kittenFound = true;
+			} else if (found === "cookie") {
+        if(!box.counted){
+          box.counted = true;
+          that.cookie_count += 1;
+          that.time -= 10;
+          console.log("cookie found!");
+        }
 			} else if (found === "other") {
-				//TODO: get meow in place
 				$(".meow-box").html("<p>meow</p>");
 				var directionHint = that.boxes.getDirectionHint(that.robot.position);
 				var offset = 50;

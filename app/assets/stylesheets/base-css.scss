@@ -108,7 +108,7 @@ table.high-scores {
 .meow-box {
 	z-index: 201;
 	color: #ffffff;
-	font-size: 5%;
+	font-size: .5em;
 }
 
 .cookie-counter {
@@ -122,6 +122,15 @@ table.high-scores {
 	top: 20%;
 	background: #000000;
 	padding: $basepadding;
+}
+
+.highlight {
+  color: $skyblue;
+  text-shadow:
+   -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,  
+    $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+    -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
+     $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
 }
 
 /* footer styles */

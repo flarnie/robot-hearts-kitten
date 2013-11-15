@@ -11,6 +11,7 @@ Rhk.Models.Box = Backbone.Model.extend({
 		this.position = [true_x, true_y];
 		this.contents = options.contents;
 		this.opened = false;
+		this.counted = false;
 	},
 	
 	drawSelf: function () {
@@ -54,6 +55,8 @@ Rhk.Models.Box = Backbone.Model.extend({
 			this.opened = true;
 			if (this.contents === "kitten"){
 				return "kitten";
+			} else if (this.contents === "cookie"){
+			  return "cookie";
 			} else {
 				return "other";
 			}
