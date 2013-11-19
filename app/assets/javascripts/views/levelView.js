@@ -103,6 +103,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		//NOTE: we can't set keydown handler in the events hash
 		$(window).on("keydown", null, function (e) {
 			that.moveRobot(e);
+			that.keepRobotOnScreen();
 		});
 		this.intervalID1 = intervalID1;
 		var intervalID2 = window.setInterval(function () {
@@ -133,5 +134,27 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		    // do nothing
 		    break;
 		}
+	},
+	
+	keepRobotOnScreen: function () {
+    var pos = this.robot.position;
+    switch (true) {
+      case (pos[0] >= this.canvas_width):
+        this.robot.position[0] = 0;
+        break;
+      case (pos[0] < 0):
+        this.robot.position[0] = this.canvas_width;
+        break;
+      case (pos[1] >= this.canvas_height):
+        this.robot.position[1] = 0;
+        break;
+      case (pos[1] < 0):
+        this.robot.position[1] = this.canvas_height;
+        break;
+      default:
+        // things are fine.
+        break;
+    }
 	}
+	
 })
