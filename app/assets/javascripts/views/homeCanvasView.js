@@ -9,7 +9,7 @@ Rhk.Views.HomeCanvasView = Backbone.View.extend({
 		var that = this;
 		// robot
 		var robotImg = new Image();
-		robotImg.src = "robot.png";
+		robotImg.src = "big-robot.png";
 		var robot = new Rhk.Models.Movable({
 			ctx: that.ctx,
 			imageObj: robotImg,
@@ -20,7 +20,7 @@ Rhk.Views.HomeCanvasView = Backbone.View.extend({
 		//
 		// kitten 
 		var kittenImg = new Image();
-		kittenImg.src = "kitten.png";
+		kittenImg.src = "big-kitten.png";
 		var kitten = new Rhk.Models.Movable({
 			ctx: that.ctx,
 			imageObj: kittenImg,
