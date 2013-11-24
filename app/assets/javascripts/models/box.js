@@ -32,16 +32,16 @@ Rhk.Models.Box = Backbone.Model.extend({
 						that.box_size-5);
 				};
 			} else if (this.contents === "cookie") {
-        this.ctx.fillStyle = "#ffe79e";
-               var radius = this.box_size / 2;
-               var centerX = this.position[0] + radius;
-               var centerY = this.position[1] + radius;
-               this.ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false); 
-               this.ctx.fill();
-               // TODO: draw a picture instead of a circle, to speed up processing time
-        // this.ctx.strokeStyle = "#ffe79e";
-        // this.ctx.strokeRect(that.position[0], that.position[1], that.box_size, that.box_size);
-				
+				var cookieImg = new Image();
+				cookieImg.src = "../cookie.png";
+				var that = this;
+				cookieImg.onload = function () {
+					that.ctx.drawImage(cookieImg,
+						that.position[0]+5, 
+						that.position[1]+5, 
+						that.box_size-5,
+						that.box_size-5);
+				};
 			}
 		} else {
 			this.ctx.fillStyle = this.color;
