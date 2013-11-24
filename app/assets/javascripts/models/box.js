@@ -12,6 +12,10 @@ Rhk.Models.Box = Backbone.Model.extend({
 		this.contents = options.contents;
 		this.opened = false;
 		this.counted = false;
+		this.kittenImg = new Image();
+		this.kittenImg.src = "../kitten.png";
+		this.cookieImg = new Image();
+		this.cookieImg.src = "../cookie.png";
 	},
 	
 	drawSelf: function () {
@@ -21,27 +25,23 @@ Rhk.Models.Box = Backbone.Model.extend({
 			this.ctx.strokeStyle = this.color;
 			this.ctx.strokeRect(that.position[0], that.position[1], that.box_size, that.box_size);	
 			if (this.contents === "kitten") {
-				var kittenImg = new Image();
-				kittenImg.src = "../kitten.png";
-				var that = this;
-				kittenImg.onload = function () {
-					that.ctx.drawImage(kittenImg,
+				that.kittenImg.onload = function () {
+					that.ctx.drawImage(that.kittenImg,
 						that.position[0]+5, 
 						that.position[1]+5, 
 						that.box_size-5,
 						that.box_size-5);
 				};
 			} else if (this.contents === "cookie") {
-				var cookieImg = new Image();
-				cookieImg.src = "../cookie.png";
 				var that = this;
-				cookieImg.onload = function () {
-					that.ctx.drawImage(cookieImg,
+        // that.cookieImg.onload = function () {
+        //   debugger
+					that.ctx.drawImage(that.cookieImg,
 						that.position[0]+5, 
 						that.position[1]+5, 
 						that.box_size-5,
 						that.box_size-5);
-				};
+        // };
 			}
 		} else {
 			this.ctx.fillStyle = this.color;
