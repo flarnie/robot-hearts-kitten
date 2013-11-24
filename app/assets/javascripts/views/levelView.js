@@ -76,22 +76,26 @@ Rhk.Views.LevelView = Backbone.View.extend({
 			}
 		});
 		if (that.kittenFound){
-			window.clearInterval(this.intervalID2);
-			window.clearInterval(this.intervalID1);
-			var $winMsg = $("<div></div>").addClass("win-message").text("You found the kitten!");
-			var scoreData = {"score": {
-					"cookies": that.boxes.countFoundCookies(),
-					"score_board_id": this.scoreboard_id,
-					"time": this.time
-			  }
-			}
-			var newScoreView = new Rhk.Views.NewScoreView({
-				scoreData: scoreData
-			});
-			$winMsg.append(newScoreView.render().$el);
-			$(".canvas-wrapper").append($winMsg);
+      that.gameWon();
 		}
 		$(".cookie-counter").html("<p>COOKIES: "+this.boxes.countFoundCookies()+"</p>");
+	},
+	
+	gameWon: function() {
+		window.clearInterval(this.intervalID2);
+		window.clearInterval(this.intervalID1);
+		var $winMsg = $("<div></div>").addClass("win-message").text("You found the kitten!");
+		var scoreData = {"score": {
+				"cookies": this.boxes.countFoundCookies(),
+				"score_board_id": this.scoreboard_id,
+				"time": this.time
+		  }
+		}
+		var newScoreView = new Rhk.Views.NewScoreView({
+			scoreData: scoreData
+		});
+		$winMsg.append(newScoreView.render().$el);
+		$(".canvas-wrapper").append($winMsg);	  
 	},
 	
 	startAnimation: function () {
