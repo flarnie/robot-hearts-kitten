@@ -1,6 +1,7 @@
 <h3><%= @level.title %></h3>
 <script type="application/json" id="bootstrapped-level">
-{ "scoreboard_id": "<%= @level.scoreboard.id %>",
+{ "level_num": "<%= @level.id %>",
+  "scoreboard_id": "<%= @level.scoreboard.id %>",
   "items": <%= (@level.generate_item_array()).to_json.html_safe %> }
 </script>
 

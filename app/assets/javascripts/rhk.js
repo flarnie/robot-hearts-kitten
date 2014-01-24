@@ -23,17 +23,20 @@ window.Rhk = {
 				});
 				homeCanvasView.render();
 				homeCanvasView.startAnimation();
+				$("#home-canvas").focus();
 			} else if ($("#bootstrapped-level").length){
 				var canvas_width = $("#level-canvas").width();
 				var canvas_height = $("#level-canvas").height();
 				var levelData = JSON.parse($("#bootstrapped-level").html());
 				var boxes = levelData.items;
+				var level_num = levelData.level_num;
 				var scoreboard_id = levelData.scoreboard_id;
 				var levelView = new Rhk.Views.LevelView({
 					canvas_width: canvas_width,
 					canvas_height: canvas_height,
 					boxes: boxes,
-					scoreboard_id: scoreboard_id
+					scoreboard_id: scoreboard_id,
+					level_num: level_num
 				});
 				levelView.render();
 				levelView.startAnimation();

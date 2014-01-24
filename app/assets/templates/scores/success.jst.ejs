@@ -1,5 +1,6 @@
 <p>SCORE SUBMITTED</p>
-<p><a href="/scoreboards/<%= score_board_id %>">View HighScores</a></p>
-<% if (next_level_id){ %>
-  <p><a href="levels/<%= next_level_id %>">Play Next Level</a></p>
+<% if (next_level_id && next_level_id <= 4){ %>
+  <p><a href="/levels/<%= next_level_id %>">Play Next Level</a></p>
+  <p>or</p>
 <% } %>
+<p><a href="/scoreboards/<%= score_board_id %>">View HighScores</a></p>

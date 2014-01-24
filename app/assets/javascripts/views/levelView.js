@@ -2,6 +2,7 @@ Rhk.Views.LevelView = Backbone.View.extend({
 	initialize: function (options) {
 		this.imgWidth = 18;
 		this.scoreboard_id = options.scoreboard_id;
+		this.level_num = options.level_num;
 		this.canvas_width = options.canvas_width;
 		this.canvas_height = options.canvas_height;
 		this.cookie_count = 0
@@ -23,7 +24,6 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		// boxes
 		this.boxes = new Rhk.Collections.Boxes();
 		_(options.boxes).each( function (boxData) {
-			console.log("box at ", boxData.x, ",", boxData.y , " and contains ", boxData.contents)
 			that.boxes.push(new Rhk.Models.Box({
 				ctx: that.ctx,
 				position: [boxData.x, boxData.y],
@@ -92,7 +92,8 @@ Rhk.Views.LevelView = Backbone.View.extend({
 		  }
 		}
 		var newScoreView = new Rhk.Views.NewScoreView({
-			scoreData: scoreData
+			scoreData: scoreData,
+			nextLevelId: ((+this.level_num) + 1)
 		});
 		$winMsg.append(newScoreView.render().$el);
 		$(".canvas-wrapper").append($winMsg);	  
