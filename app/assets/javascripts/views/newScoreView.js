@@ -25,6 +25,7 @@ Rhk.Views.NewScoreView = Backbone.View.extend({
 	
 	submitScore: function () {
 		var username = $("#score_username").val();
+		$("#score_username").attr("disabled", "true");
 		this.scoreData["score"]["username"] = username;
 		var that = this;
 		$.ajax({
