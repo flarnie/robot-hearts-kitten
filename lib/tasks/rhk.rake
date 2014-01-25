@@ -6,6 +6,9 @@ namespace :rhk do
       if balanced_score < 0
         score.destroy
       end
+      if score.cookies >= 10
+        score.destroy
+      end
     end
   end
   
