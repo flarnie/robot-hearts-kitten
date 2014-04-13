@@ -5,7 +5,20 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'database_cleaner'
-# DatabaseCleaner.strategy = :truncation
+require 'capybara/poltergeist'
+
+# Transactional fixtures do not work with Poltergeist tests, because Capybara
+# uses a separate server thread, which the transactions would be hidden
+# from. We hence use DatabaseCleaner to truncate our test database.
+require 'database_cleaner'
+
+# Sets up phantomJS as the JS driver for integration testing
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, :js_errors => true, :inspector => true)
+end
+
+Capybara.javascript_driver = :poltergeist
+
 # Capybara.app_host = "http://todomvc.com"
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -29,13 +42,6 @@ RSpec.configure do |config|
  #  config.use_transactional_fixtures = false
   config.use_transactional_fixtures = false
 
- #  config.before :each do
- #    DatabaseCleaner.start
- #  end
- #  config.after :each do
- #    DatabaseCleaner.clean
- #  end
-
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
@@ -48,17 +54,15 @@ RSpec.configure do |config|
 #   config.order = "random"
 end
 
+# ------ Helper Functions -----
+
 # Helper script to trigger keypresses in specs
 
-# left = 37
-# up = 38
-# right = 39
-# down = 40
-# TODO: Why doesn't this work? :(
-def simulate_keypress(keycode)
-  puts "simulating keypress"
-  keypress_script ="var evt = document.createEvent('KeyboardEvent');" +
-    "evt.initKeyEvent ('keypress', true, true, window, 0, 0, 0, 0," +
-    "#{keycode}, #{keycode})"
-    page.driver.browser.execute_script(keypress_script)
+# left = :Left
+# up = :Up
+# right = :Right
+# down = :Down
+def press_key(key_str)
+  find('body').native.send_keys(key_str)
 end
+
