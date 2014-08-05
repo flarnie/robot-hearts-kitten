@@ -1,153 +1,150 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 
-/* mixins and magic numbers */
-/* colors */
+// mixins and magic numbers */
+// colors */
 $baseblack: #575757;
-$grassgreen: #5AE310;
-$medgreen: #2EBA3F;
+$grassgreen: #5ae310;
+$medgreen: #2eba3f;
 $kittenyellow: #ffe79e;
-$skyblue: #1188FF;
-$medblue: #4422FF;
+$skyblue: #18f;
+$medblue: #42f;
 $darkblue: #040590;
-$baseorange: #FE5500;
-$basered: #EE0001;
-$basebrown: #69533A;
-$lghtbrown: #A8845B;
+$baseorange: #fe5500;
+$basered: #ee0001;
+$basebrown: #69533a;
+$lghtbrown: #a8845b;
 
-/* numbers */
+// numbers */
 $basepadding: 1.5em;
 $textoutlinewidth: 2px;
 
 
-/* mixins */
+// mixins */
 @mixin top-level-centered {
-	width: 80%;
-	min-width: 750px;
-	margin: 0 auto;	
-	padding: .5em 0;
+  width: 80%;
+  margin: 0 auto;
+  min-width: 750px;
+  padding: .5em 0;
 }
 
-/* general styles */
+// general styles */
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	background: #000000;
-	height: 100%;
+  background: #000;
+  height: 100%;
 }
 
 .wrapper {
-	@include top-level-centered;
-	border-left: solid 2px #ffffff;
-	border-right: solid 2px #ffffff;
-	color: $baseorange;
-	font-family: 'Press Start 2P', cursive;
-	min-height: 100%;
-	padding: 0 $basepadding ;
+  @include top-level-centered;
+  border-left: solid 2px #fff;
+  border-right: solid 2px #fff;
+  color: $baseorange;
+  font-family: 'Press Start 2P', cursive;
+  min-height: 100%;
+  padding: 0 $basepadding;
+
+  header h1 {
+    padding: $basepadding 0;
+    text-shadow: -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+      $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+      -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
+       $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
+  }
 }
 
 a {
-	color: $baseorange;
+  color: $baseorange;
 }
 
 ul li, h1, h2, h3, h4, p {
-	padding-top: 1em;
-	padding-bottom: $basepadding;
+  padding-top: 1em;
+  padding-bottom: $basepadding;
 }
 
 ul.non-list li {
-	list-style: none;
+  list-style: none;
 }
 
-/* high scores table */
+// high scores table */
 
 table.high-scores {
-	tr {
-	  color: #ffffff;	
-	}
-	th, td {
-	  padding: .5em ;
-	  padding-right: 1em;
-	  text-align: left;	
-	}
+  tr {
+    color: #fff;
+  }
+
+  th,
+  td {
+    padding: .5em;
+    padding-right: 1em;
+    text-align: left;
+  }
 }
 
-/* header styles */
 
-.wrapper header h1 {
-	text-shadow:
-   -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,  
-    $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
-    -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
-     $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
+// content styles */
 
-  padding: $basepadding 0;
-}
-
-/* content styles */
-
-.canvas-wrapper canvas, .win-message {
-	border: 1px solid $medblue;
+.canvas-wrapper canvas,
+.win-message {
+  border: 1px solid $medblue;
 }
 
 .canvas-wrapper {
-	position: relative;
+  position: relative;
 }
 
-.timer, .meow-box, .cookie-counter, .win-message {
-	position: absolute;
+.timer,
+.meow-box,
+.cookie-counter,
+.win-message {
+  position: absolute;
 }
 
 .timer {
-	left: 20px;
-	z-index: 200;
+  left: 20px;
+  z-index: 200;
 }
 
 .meow-box {
-	z-index: 201;
-	color: #ffffff;
-	font-size: .5em;
+  color: #fff;
+  font-size: .5em;
+  z-index: 201;
 }
 
 .cookie-counter {
-	left: 20px;
-	z-index: 200;
-	bottom: 50px;
+  bottom: 50px;
+  left: 20px;
+  z-index: 200;
 }
 
 .cookie-alert {
+  left: 50px;
   position: absolute;
   top: 50px;
-  left: 50px;
 }
 
 .win-message {
-	left: 20%;
-	top: 20%;
-	background: #000000;
-	padding: $basepadding;
+  background: #000;
+  left: 20%;
+  padding: $basepadding;
+  top: 20%;
 }
 
 .highlight {
   color: $skyblue;
-  text-shadow:
-   -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,  
-    $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
-    -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
-     $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
+  text-shadow: -$textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+  $textoutlinewidth -$textoutlinewidth 0 $kittenyellow,
+  -$textoutlinewidth $textoutlinewidth 0 $kittenyellow,
+  $textoutlinewidth $textoutlinewidth 0 $kittenyellow;
 }
 
-/* footer styles */
-
-.wrapper footer {
-
-}
+// footer styles */
 
 footer.main-footer ul li {
-	display: inline-block;
-	padding-right: $basepadding;
+  display: inline-block;
+  padding-right: $basepadding;
 }
-
 
